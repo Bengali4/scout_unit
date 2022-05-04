@@ -3,6 +3,13 @@ let express = require('express');
 //Initialize express
 let app = express();
 
+//Import db
+let db = require('./db');
+//Use json
+app.use(express.json());
+//sync db
+db.sync();
+
 //Send message for default route
 app.get('/', (req, res) => { res.send('Hello World!');});
 
