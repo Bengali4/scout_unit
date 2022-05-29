@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { SectionComponent } from './section/section.component';
 import { ScoutComponent } from './scout/scout.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,8 @@ import { ScoutComponent } from './scout/scout.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

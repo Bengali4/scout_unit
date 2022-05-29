@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService, Section, Scout } from '../rest.service';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-section',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SectionComponent implements OnInit {
 
-  constructor() { }
+  // Instanciate sections array
+  sections: Section[] = [];
+
+  constructor(public rest: RestService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getSections();
   }
 
+  // Get all sections
+  getSections() {
+    this.rest.getSections().subscribe((data: {}) => {
+      console.log(data);
+      this.sections = data as Section[];
+    });
+  }
+  // Get section by id
+  getSection(id: Section["id"]) {
+    this.rest.getSection(id).subscribe((data: {}) => {
+      console.log(data);
+      this.sections = data as Section[];
+    });
+  }
 }
