@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 // Define Section model
-const Section = db.define('section', {
+const Section = db.define('sections', {
     section_id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
     section_name: { type: Sequelize.STRING, allowNull: false },
     section_description: { type: Sequelize.STRING, allowNull: true }
