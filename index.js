@@ -13,6 +13,8 @@ db.sync();
 //Send message for default route
 app.get('/', (req, res) => { res.send('Hello World!');});
 
+app.use('/section', require('./routes/section_rt'));
+
 //Setup server port
 let port = 3000;
 //Launch app to listen on port

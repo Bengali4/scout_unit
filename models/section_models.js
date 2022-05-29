@@ -1,7 +1,7 @@
 // Import sequelize
 const Sequelize = require('sequelize');
 // Import db
-const db = require('./db');
+const db = require('../db');
 
 // Define Section model
 const Section = db.define('section', {
