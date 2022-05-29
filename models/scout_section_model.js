@@ -1,30 +1,16 @@
 // Import sequelize
-let Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 // Import db
-let db = require('../db');
+const db = require('../db');
 //Import scout_model
 const Scout = require('../models/scout_model');
 //Import section_model
 const Section = require('../models/section_model');
 
 // Define scout_section model
-let Scout_Section = db.define('scout_sections', {
-    /* section_id: {
-        type: Sequelize.INTEGER,
-        references: {
-            model: Section,
-            key: 'section_id'
-        }
-    },
-    scout_id: {
-        type: Sequelize.INTEGER,
-        references: {
-            model: Scout,
-            key: 'scout_id'
-        }
-    }, */
-    to: { type: Sequelize.INTEGER, allowNull: false },
-    from: { type: Sequelize.INTEGER, allowNull: false }
+const Scout_Section = db.define('scout_sections', {
+    from: { type: Sequelize.INTEGER, allowNull: false },
+    to: { type: Sequelize.INTEGER, allowNull: false }
 });
 
 //Create association between scout and section

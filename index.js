@@ -1,10 +1,10 @@
 //Import express
-let express = require('express');
+const express = require('express');
 //Initialize express
-let app = express();
+const app = express();
 
 //Import db
-let db = require('./db');
+const db = require('./db');
 //Use json
 app.use(express.json());
 //sync db
@@ -20,7 +20,7 @@ app.use('/scout', require('./routes/scout_rt'));
 app.use('/scout_section', require('./routes/scout_section_rt'));
 
 //Setup server port
-let port = 3000;
+const port = 3000;
 //Launch app to listen on port
 app.listen(port, function () {
     console.log('Server running on port ' + port);

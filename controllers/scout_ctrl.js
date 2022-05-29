@@ -7,7 +7,7 @@ const Section = require('../models/section_model');
 class scout_ctrl {
     //Get all scouts
     async getAllScouts() {
-        let scouts = await Scout.findAll().then(data=>{
+        const scouts = await Scout.findAll().then(data=>{
             return data;
         }).catch(err=>{
             return err;
@@ -17,7 +17,7 @@ class scout_ctrl {
 
     //Get scout by id
     async getScoutById(scout_id) {
-        let scout = await Scout.findOne({where:{scout_id:scout_id}, include: Section}).then(data=>{
+        const scout = await Scout.findOne({where:{id:scout_id}, include: Section}).then(data=>{
             return data;
         }).catch(err=>{
             return err;
@@ -27,13 +27,13 @@ class scout_ctrl {
 
     //Create new scout
     async createScout(new_scout) {
-        let scout = await Scout.build({
-            scout_id: new_scout.scout_id,
-            scout_first_name: new_scout.scout_first_name,
-            scout_name: new_scout.scout_name,
-            scout_totem: new_scout.scout_totem,
-            scout_quali: new_scout.scout_quali,
-            scout_email: new_scout.scout_email
+        const scout = await Scout.build({
+            id: new_scout.id,
+            first_name: new_scout.first_name,
+            name: new_scout.name,
+            totem: new_scout.totem,
+            quali: new_scout.quali,
+            email: new_scout.email
         }).save().then(data=>{
             return data;
         }).catch(err=>{

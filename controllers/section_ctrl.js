@@ -7,7 +7,7 @@ const Scout = require('../models/scout_model');
 class section_ctrl {
     //Get all sections
     async getAllSections() {
-        let sections = await Section.findAll().then(data=>{
+        const sections = await Section.findAll().then(data=>{
             return data;
         }).catch(err=>{
             return err;
@@ -17,7 +17,7 @@ class section_ctrl {
 
     //Get section by id
     async getSectionById(section_id) {
-        let section = await Section.findOne({where:{section_id:section_id}, include: Scout}).then(data=>{
+        const section = await Section.findOne({where:{id:section_id}, include: Scout}).then(data=>{
             return data;
         }).catch(err=>{
             return err;
@@ -27,10 +27,10 @@ class section_ctrl {
 
     //Create new section
     async createSection(new_section) {
-        let section = await Section.build({
-            section_id: new_section.section_id,
-            section_name: new_section.section_name,
-            section_description: new_section.section_description
+        const section = await Section.build({
+            id: new_section.id,
+            name: new_section.name,
+            description: new_section.description
         }).save().then(data=>{
             return data;
         }).catch(err=>{
