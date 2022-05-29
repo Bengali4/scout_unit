@@ -2,6 +2,10 @@
 const Section = require('../models/section_model');
 //Import scout_model
 const Scout = require('../models/scout_model');
+//Import scout_section_model
+const Scout_Section = require('../models/scout_section_model');
+//Import sequelize
+const { Op } = require("sequelize");
 
 //Create section controller
 class section_ctrl {
@@ -17,13 +21,24 @@ class section_ctrl {
 
     //Get section by id
     async getSectionById(section_id) {
-        const section = await Section.findOne({where:{id:section_id}, include: Scout}).then(data=>{
+        const section = await Section.findOne({where:{id:section_id}, include:[{model: Scout, through:{attributes:['from', 'to']}}]}).then(data=>{
             return data;
         }).catch(err=>{
             return err;
         });
         return section;
     }
+
+    //Get scouts in a section between two years (From, To)
+    async getScoutsInSection(section_id, from, to) {
+        const scouts = await Section.findOne({where:{id:section_id}, include:[{model: Scout, through:{where:{from:{[Op.gte]:from},to:{[Op.lte]:to}}}}]}).then(data=>{
+            return data;
+        }).catch(err=>{
+            return err;
+        });
+        return scouts;
+    }
+
 
     //Create new section
     async createSection(new_section) {

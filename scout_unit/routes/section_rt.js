@@ -17,6 +17,12 @@ section_rt.get('/:section_id', async (req, res) => {
     res.json(section);
 });
 
+//Route to get scouts in a section between two years (From, To)
+section_rt.get('/:section_id/:from/:to', async (req, res) => {
+    const scouts = await section_ctrl.getScoutsInSection(req.params.section_id, req.params.from, req.params.to);
+    res.json(scouts);
+});
+
 //Route to create new section
 section_rt.post('/', async (req, res) => {
     const new_section = await section_ctrl.createSection(req.body);
