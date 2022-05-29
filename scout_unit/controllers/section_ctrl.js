@@ -21,7 +21,7 @@ class section_ctrl {
 
     //Get section by id
     async getSectionById(section_id) {
-        const section = await Section.findOne({where:{id:section_id}, include:[{model: Scout, through:{attributes:['from', 'to']}}]}).then(data=>{
+        const section = await Section.findOne({where:{id:section_id}, include:[{model: Scout, through:{attributes:['from', 'to']}}], order:[[Scout, Scout_Section, 'from','ASC']]}).then(data=>{
             return data;
         }).catch(err=>{
             return err;
@@ -31,7 +31,7 @@ class section_ctrl {
 
     //Get scouts in a section between two years (From, To)
     async getScoutsInSection(section_id, from, to) {
-        const scouts = await Section.findOne({where:{id:section_id}, include:[{model: Scout, through:{where:{from:{[Op.gte]:from},to:{[Op.lte]:to}}}}]}).then(data=>{
+        const scouts = await Section.findOne({where:{id:section_id}, include:[{model: Scout, through:{where:{from:{[Op.gte]:from},to:{[Op.lte]:to}}}}],order:[[Scout, Scout_Section, 'from','ASC']]}).then(data=>{
             return data;
         }).catch(err=>{
             return err;
