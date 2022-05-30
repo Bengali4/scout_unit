@@ -15,6 +15,8 @@ export interface Scout {
   totem: string;
   quali: string;
   email: string;
+  sections: Array<Section>;
+  scout_sections:Array<any>;
 }
 
 // Export interface section
@@ -22,7 +24,16 @@ export interface Section {
   id: number;
   name: string;
   description: string;
-  //scouts: Scout[];
+  scouts: Array<Scout>;
+  scout_sections:Array<any>;
+}
+
+// Export interface scout_sections
+export interface Scout_Sections {
+  section_id: number;
+  scout_id: number;
+  from: number;
+  to: number;
 }
 
 @Injectable({
@@ -33,11 +44,28 @@ export class RestService {
   constructor(private http: HttpClient) { }
 
   // Get all sections
-  getSections() {
+  getSections(): Observable<any> {
     return this.http.get(endpoint + 'section');
   }
   // Get section by id
-  getSection(id: Section["id"]) {
+  getSection(id: Section["id"]): Observable<any> {
     return this.http.get(endpoint + 'section/' + id);
   }
+  // Get all scouts
+  getScouts(): Observable<any> {
+    return this.http.get(endpoint + 'scout');
+  }
+  // Get scout by id
+  getScout(id: Scout["id"]): Observable<any> {
+    return this.http.get(endpoint + 'scout/' + id);
+  }
+  // Add scout
+  addScout(scout: Scout): Observable<any> {
+    return this.http.post(endpoint + 'scout', scout);
+  }
+  // Add scout to section
+  addScoutToSection(scout_sections: Scout_Sections): Observable<any> {
+    return this.http.post(endpoint + 'scout_sections', scout_sections);
+  }
+
 }

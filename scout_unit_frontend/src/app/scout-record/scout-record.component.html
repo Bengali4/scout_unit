@@ -1,0 +1,12 @@
+<h2>Totem : {{scout.totem}}</h2> 
+<h3>Nom : {{scout.name}}</h3>
+<h3>Prénom : {{scout.first_name}}</h3>
+<h3>Quali : {{scout.quali}}</h3>
+<h3>Email : {{scout.email}}</h3>
+<h3>Identifiant : {{scout.id}}</h3>
+<h3>Parcours :</h3>
+<ul>
+    <li *ngFor="let section of scout.sections">
+        <h4>{{section.name}} (De : {{scout_sections.get(section.name).from}} - Jusque : {{scout_sections.get(section.name).to}})</h4>
+    </li>
+</ul>

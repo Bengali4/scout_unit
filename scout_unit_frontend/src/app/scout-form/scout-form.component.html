@@ -1,0 +1,13 @@
+<div>
+    <h2>Informations personnelles</h2>
+    <input type="text" [(ngModel)]="scout.first_name" placeholder="Prénom"><br>
+    <input type="text" [(ngModel)]="scout.name" placeholder="Nom"><br>
+    <input type="text" [(ngModel)]="scout.totem" placeholder="Totem"><br>
+    <input type="text" [(ngModel)]="scout.quali" placeholder="Quali"><br>
+    <input type="text" [(ngModel)]="scout.email" placeholder="Email"><br>
+    <button (click)='addScout()'>Enregistrer</button>
+
+    <h3>Votre Identifiant :</h3> <p>{{scout.id}}</p>
+
+    
+</div>

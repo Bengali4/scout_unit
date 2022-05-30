@@ -5,6 +5,7 @@ const scout_section_ctrl = require('../controllers/scout_section_ctrl');
 //Initialize scout_section express router
 const scout_section_rt = express.Router();
 
+
 const headers = {
     'Content-Type': 'application/json',
     "Access-Control-Allow-Origin": '*',

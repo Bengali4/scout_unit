@@ -17,7 +17,7 @@ class scout_ctrl {
 
     //Get scout by id
     async getScoutById(scout_id) {
-        const scout = await Scout.findOne({where:{id:scout_id}, include: Section}).then(data=>{
+        const scout = await Scout.findOne({where:{id:scout_id}, include:[{model: Section}]}).then(data=>{
             return data;
         }).catch(err=>{
             return err;

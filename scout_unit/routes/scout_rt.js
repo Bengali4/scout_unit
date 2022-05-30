@@ -7,6 +7,7 @@ const scout_rt = express.Router();
 
 const headers = {
     'Content-Type': 'application/json',
+    "Access-Control-Allow-Credentials" : true,
     "Access-Control-Allow-Origin": '*',
     "Access-Control-Allow-Methods" : "*",
     "Access-Control-Allow-Headers" : "*"    
@@ -21,12 +22,14 @@ scout_rt.get('/', async (req, res) => {
 
 //Route to get scout by id
 scout_rt.get('/:scout_id', async (req, res) => {
+    res.set(headers);
     const scout = await scout_ctrl.getScoutById(req.params.scout_id);
     res.json(scout);
 });
 
 //Route to create new scout
 scout_rt.post('/', async (req, res) => {
+    res.set(headers);
     const new_scout = await scout_ctrl.createScout(req.body);
     res.json(new_scout);
 });

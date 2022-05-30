@@ -3,6 +3,8 @@ const Scout_Section = require('../models/scout_section_model');
 
 //Create scout_section controller
 class scout_section_ctrl {
+    // Get scout_section by scout
+
     //Create new scout_section
     async createScout_Section(new_scout_section){
         const scout_section = await Scout_Section.build({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService, Section, Scout } from '../rest.service';
+import { RestService, Section, Scout, Scout_Sections } from '../rest.service';
 
 import { Router } from '@angular/router';
 
@@ -32,5 +32,9 @@ export class SectionComponent implements OnInit {
       console.log(data);
       this.sections = data as Section[];
     });
+  }
+  // Navigate to scout form
+  add() {
+    this.router.navigate(['/scout-form']);
   }
 }

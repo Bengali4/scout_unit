@@ -29,6 +29,16 @@ class section_ctrl {
         return section;
     }
 
+    //Get id of section by name
+    async getSectionIdByName(section_name) {
+        const section_id = await Section.findOne({where:{name:section_name}}).then(data=>{
+            return data.id;
+        }).catch(err=>{
+            return err;
+        });
+        return section_id;
+    }
+
     //Get scouts in a section between two years (From, To)
     async getScoutsInSection(section_id, from, to) {
         const scouts = await Section.findOne({where:{id:section_id}, include:[{model: Scout, through:{where:{from:{[Op.gte]:from},to:{[Op.lte]:to}}}}],order:[[Scout, Scout_Section, 'from','ASC']]}).then(data=>{

@@ -33,6 +33,13 @@ section_rt.get('/:section_id/:from/:to', async (req, res) => {
     res.json(scouts);
 });
 
+//Route to get section id by name
+section_rt.get('/name/:section_name', async (req, res) => {
+    res.set(headers);
+    const section_id = await section_ctrl.getSectionIdByName(req.params.section_name);
+    res.json(section_id);
+});
+
 //Route to create new section
 section_rt.post('/', async (req, res) => {
     res.set(headers);
