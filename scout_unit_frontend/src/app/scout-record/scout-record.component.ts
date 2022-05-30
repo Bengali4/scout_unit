@@ -15,9 +15,8 @@ export class ScoutRecordComponent implements OnInit {
   from_to : any = { from: 0, to: 0 };
   scout_sections : Map<string, any> = new Map<string, any>();
   
-
   // Instancied scout_id variable
-  scout_id: number | undefined;
+  scout_id: number = 0;
 
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
 
@@ -54,6 +53,12 @@ export class ScoutRecordComponent implements OnInit {
       console.log(this.scout_id);
       this.getScout(params['scout_id']);
     });
+  }
+
+  //Redirect to section form
+  addSection() {
+    console.log('click');
+    this.router.navigate(['/section-form'], { queryParams: { scout_id: this.scout_id } });
   }
 
 }

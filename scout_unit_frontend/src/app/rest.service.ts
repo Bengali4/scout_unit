@@ -7,6 +7,8 @@ import { map } from 'rxjs/operators';
 
 const endpoint = 'http://localhost:3000/';
 
+
+
 // Export interface scout
 export interface Scout {
   id: number;
@@ -30,8 +32,8 @@ export interface Section {
 
 // Export interface scout_sections
 export interface Scout_Sections {
-  section_id: number;
-  scout_id: number;
+  sectionId: number;
+  scoutId: number;
   from: number;
   to: number;
 }
@@ -65,7 +67,7 @@ export class RestService {
   }
   // Add scout to section
   addScoutToSection(scout_sections: Scout_Sections): Observable<any> {
-    return this.http.post(endpoint + 'scout_sections', scout_sections);
+    return this.http.post(endpoint + 'scout_section', scout_sections);
   }
 
 }

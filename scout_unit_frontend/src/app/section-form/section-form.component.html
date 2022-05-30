@@ -1,7 +1,14 @@
-<h2>Chef Baladins</h2>
-    <input type="number" [(ngModel)]="scout_sections.section_id" placeholder="">Identifiant section<br>
-    <input type="number" [(ngModel)]="scout_sections.scout_id" placeholder="">Identifiant scout<br>
-    <input type="number" [(ngModel)]="scout_sections.from" placeholder="">Depuis<br>
-    <input type="number" [(ngModel)]="scout_sections.to" placeholder="">Jusque<br>
-
-    <button (click)='addScoutToSection()'>Enregistrer</button>
+<form>
+    <h4>Section à ajouter :</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Choisi la section</mat-label>
+      <mat-select [(ngModel)]="selected_section_id" name="Section">
+        <mat-option *ngFor="let section of sectionInterfaces" [value]="section.value">
+          {{section.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</form>
+<input type="number" [(ngModel)]="scout_sections.from" placeholder="">Depuis<br>
+<input type="number" [(ngModel)]="scout_sections.to" placeholder="">Jusque<br>
+<button (click)='addScoutToSection()'>Enregistrer</button>

@@ -8,9 +8,10 @@ const scout_section_rt = express.Router();
 
 const headers = {
     'Content-Type': 'application/json',
+    //"Access-Control-Allow-Credentials" : true,
     "Access-Control-Allow-Origin": '*',
     "Access-Control-Allow-Methods" : "*",
-    "Access-Control-Allow-Headers" : "*"    
+    "Access-Control-Allow-Headers" : "*" 
 }
 
 //Route to create new scout_section
