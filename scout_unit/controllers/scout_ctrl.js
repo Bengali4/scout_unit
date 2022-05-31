@@ -7,7 +7,7 @@ const Section = require('../models/section_model');
 class scout_ctrl {
     //Get all scouts
     async getAllScouts() {
-        const scouts = await Scout.findAll().then(data=>{
+        const scouts = await Scout.findAll({order:[['totem','ASC']]}).then(data=>{
             return data;
         }).catch(err=>{
             return err;
