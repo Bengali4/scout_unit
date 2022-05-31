@@ -27,37 +27,25 @@ export class ScoutRecordComponent implements OnInit {
   // Get scout by id
   getScout(id: Scout["id"]) {
     this.rest.getScout(id).subscribe((scout: Scout) => {
-      console.log(scout);
       scout.sections.forEach(section => {
         this.section = section;
-        console.log(this.section);
         this.from_to = section.scout_sections;
         this.scout_sections.set(this.section.name, this.from_to);
       });
       this.scout = scout as Scout;
-      console.log(this.scout_sections);
     });
   }
-  // // Get all sections
-  // getSections() {
-  //   this.rest.getSections().subscribe((data: {}) => {
-  //     console.log(data);
-  //     this.sections_button = data as Section[];
-  //   });
-  // }
 
   // Get id parameter from url
   getScout_id() {
     this.route.queryParams.subscribe(params => {
       this.scout_id = params['scout_id'];
-      console.log(this.scout_id);
       this.getScout(params['scout_id']);
     });
   }
 
   //Redirect to section form
   addSection() {
-    console.log('click');
     this.router.navigate(['/section-form'], { queryParams: { scout_id: this.scout_id } });
   }
 

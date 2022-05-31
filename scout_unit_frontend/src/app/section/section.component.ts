@@ -22,14 +22,12 @@ export class SectionComponent implements OnInit {
   // Get all sections
   getSections() {
     this.rest.getSections().subscribe((data: {}) => {
-      console.log(data);
       this.sections = data as Section[];
     });
   }
   // Get section by id
   getSection(id: Section["id"]) {
     this.rest.getSection(id).subscribe((data: {}) => {
-      console.log(data);
       this.sections = data as Section[];
     });
   }

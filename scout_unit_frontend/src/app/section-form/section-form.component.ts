@@ -35,7 +35,6 @@ export class SectionFormComponent implements OnInit {
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    console.log('in section form');
     this.getScout_id();
     this.getSections();
   }
@@ -43,7 +42,6 @@ export class SectionFormComponent implements OnInit {
   addScoutToSection() {
     this.scout_sections.scoutId = this.scout_id;
     this.scout_sections.sectionId = this.selected_section_id;
-    console.log(this.scout_sections);
     this.rest.addScoutToSection(this.scout_sections).subscribe((result: any) => {
       this.router.navigate(['/scout-record'], { queryParams: { scout_id: this.scout_id } });
     }, (err: any) => {
@@ -61,13 +59,11 @@ export class SectionFormComponent implements OnInit {
   // Get all sections
   getSections() {
     this.rest.getSections().subscribe((data: {}) => {
-      console.log(data);
       this.sections = data as Array<any>;
       this.sections.forEach(section => {
         this.sectionInterfaces.push({ value: section.id, viewValue: section.name });
       });
     });
-    console.log(this.sectionInterfaces);
   }
   
 }
