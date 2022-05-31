@@ -15,12 +15,13 @@
       </mat-select>
     </mat-form-field>
 </form>
-<input type="number" [(ngModel)]="from" placeholder="">Depuis<br>
-<input type="number" [(ngModel)]="to" placeholder="">Jusque<br>
-<button (click)='getSection(selected_section_id)'>Afficher scout</button>
+Depuis :<input type="number" [(ngModel)]="from" placeholder="">
+Jusque :<input type="number" [(ngModel)]="to" placeholder="">
+<button (click)='showScoutsForSection(selected_section_id)'>Afficher scout</button>
 </div>
 <ul>
     <li *ngFor="let s of scouts">
         {{s.totem}} (De : {{s.scout_sections}} à {{s.scout_sections}})
     </li>
 </ul>
+{{alerte}}

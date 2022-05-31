@@ -27,5 +27,9 @@ export class ScoutComponent implements OnInit {
   showScout(id: Scout["id"]) {
     this.router.navigate(['/scout-record'], { queryParams: { scout_id: id } });
   }
+  //Redirect to section
+  showSections() {
+    this.router.navigate(['/section']);
+  }
 
 }

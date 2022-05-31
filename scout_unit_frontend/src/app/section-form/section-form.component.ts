@@ -25,7 +25,6 @@ interface SectionInterface {
 export class SectionFormComponent implements OnInit {
 
   scout_sections = { sectionId: 0, scoutId: 0, from: 0, to: 0 };
-  // Instancied scout_id variable
   scout_id: number = 0;
   sections: Array<any> = [];
   selected_section_id: number = 0;

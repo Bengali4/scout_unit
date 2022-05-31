@@ -23,6 +23,7 @@ export class SectionComponent implements OnInit {
   sectionInterfaces: SectionInterface[] = [];
   from: number = 0;
   to: number = 0;
+  alerte: string = '';
 
   constructor(public rest: RestService, private router: Router) { }
 
@@ -39,11 +40,25 @@ export class SectionComponent implements OnInit {
       });
     });
   }
-  // Get section by id
-  getSection(id: Section["id"]) {
-    this.rest.getSection(id).subscribe((section: Section) => {
-      this.scouts = section.scouts;
-    });
+  // Show scouts in section
+  showScoutsForSection(id: Section["id"]) {
+    // Verify if section is selected
+    if (id != 0) {
+      this.alerte = '';
+      // Verify if from and to are filled
+      if (this.from === 0 || this.to === 0) {
+        this.rest.getSection(id).subscribe((section: Section) => {
+          this.scouts = section.scouts;
+        
+        });
+      } else {
+          this.rest.getScoutsInSectionBetween(id, this.from, this.to).subscribe((section: Section) => {
+          this.scouts = section.scouts;
+        });
+      }
+    } else {
+      this.alerte = "Veuillez choisir une section";
+    }
   }
   // Navigate to scout form
   add() {

@@ -51,6 +51,10 @@ export class RestService {
   getSection(id: Section["id"]): Observable<any> {
     return this.http.get(endpoint + 'section/' + id);
   }
+  // Get section by id between from and to
+  getScoutsInSectionBetween(sectionId: Scout_Sections["sectionId"], from: Scout_Sections["from"], to: Scout_Sections["to"]): Observable<any> {
+    return this.http.get(endpoint + 'section/' + sectionId + "/" + from + "/" + to);
+  }
   // Get all scouts
   getScouts(): Observable<any> {
     return this.http.get(endpoint + 'scout');

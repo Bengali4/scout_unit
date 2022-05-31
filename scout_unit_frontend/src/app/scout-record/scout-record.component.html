@@ -1,16 +1,19 @@
 <div>
-    <button (click)="showSections()">Ligne du temps</button>
+    <button (click)="showSections()">Retour aux sections</button>
 </div>
-<h2>Totem : {{scout.totem}}</h2> 
-<h3>Nom : {{scout.name}}</h3>
-<h3>Prénom : {{scout.first_name}}</h3>
-<h3>Quali : {{scout.quali}}</h3>
-<h3>Email : {{scout.email}}</h3>
-<h3>Identifiant : {{scout.id}}</h3>
-<h3>Parcours :</h3>
+<div>
+    <h2>Totem : {{scout.totem}}</h2> 
+    <h3>Nom : {{scout.name}} <br>
+    Prénom : {{scout.first_name}} <br>
+    Quali : {{scout.quali}} <br>
+    Email : {{scout.email}} <br>
+    Identifiant : {{scout.id}}</h3>
+</div>
+
+<h2>Parcours :</h2>
 <ul>
     <li *ngFor="let section of scout.sections">
-        <h4>{{section.name}} (De : {{scout_sections.get(section.name).from}} - Jusque : {{scout_sections.get(section.name).to}}) <button (click)="addSection()">Editer</button> <button (click)="deleteScout_sections(section.id, scout.id)">Supprimer</button></h4>
+        <h3>{{section.name}} (De : {{scout_sections.get(section.name).from}} - Jusque : {{scout_sections.get(section.name).to}}) <button (click)="addSection()">Editer</button> <button (click)="deleteScout_sections(section.id, scout.id)">Supprimer</button></h3>
     </li>
+    <button (click)="addSection()">Ajouter une section</button>
 </ul>
-<button (click)="addSection()">Ajouter une section</button>

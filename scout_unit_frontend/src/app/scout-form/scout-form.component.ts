@@ -24,4 +24,8 @@ export class ScoutFormComponent implements OnInit {
       console.log(err);
     });
   }
+  //Cancel
+  cancel() {
+    this.router.navigate(['/section']);
+  }
 }
