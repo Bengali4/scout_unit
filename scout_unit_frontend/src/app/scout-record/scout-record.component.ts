@@ -31,7 +31,6 @@ export class ScoutRecordComponent implements OnInit {
         this.scout_sections.set(this.section.name, this.from_to);
       });
       this.scout = scout as Scout;
-      console.log(this.scout_sections);
     });
   }
   // Get id parameter from url

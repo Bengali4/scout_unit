@@ -43,7 +43,6 @@ export class SectionComponent implements OnInit {
   getSection(id: Section["id"]) {
     this.rest.getSection(id).subscribe((section: Section) => {
       this.scouts = section.scouts;
-      console.log(this.scouts);
     });
   }
   // Navigate to scout form

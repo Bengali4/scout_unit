@@ -42,9 +42,7 @@ export class SectionFormComponent implements OnInit {
   addScoutToSection() {
     //Verify if scout_sections already exists
     this.rest.getScout_Sections(this.selected_section_id,this.scout_id).subscribe((data: {}) => {
-      console.log(data);
       if (data == null) {
-        console.log('Scout_Sections does not exist');
         this.scout_sections.scoutId = this.scout_id;
         this.scout_sections.sectionId = this.selected_section_id;
         this.rest.addScoutToSection(this.scout_sections).subscribe((result: any) => {
@@ -54,7 +52,6 @@ export class SectionFormComponent implements OnInit {
         });
       }
       else {
-        console.log('Scout_Sections already exists');
         this.scout_sections.scoutId = this.scout_id;
         this.scout_sections.sectionId = this.selected_section_id;
         this.rest.updateScout_Sections(this.selected_section_id, this.scout_id, this.scout_sections).subscribe((result: any) => {
