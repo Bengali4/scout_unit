@@ -1,9 +1,23 @@
-<h2>Sections :</h2>
 <div>
     <button (click)="add()">Formulaire</button>
 </div>
+<div>
+<form>
+    <mat-form-field appearance="fill">
+      <mat-label>Choisi la section</mat-label>
+      <mat-select [(ngModel)]="selected_section_id" name="Section">
+        <mat-option *ngFor="let section of sectionInterfaces" [value]="section.value">
+          {{section.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</form>
+<input type="number" [(ngModel)]="from" placeholder="">Depuis<br>
+<input type="number" [(ngModel)]="to" placeholder="">Jusque<br>
+<button (click)='getSection(selected_section_id)'>Afficher scout</button>
+</div>
 <ul>
-    <li *ngFor="let s of sections">
-        {{s.name}}
+    <li *ngFor="let s of scouts">
+        {{s.totem}} (De : {{s.scout_sections}} à {{s.scout_sections}})
     </li>
 </ul>

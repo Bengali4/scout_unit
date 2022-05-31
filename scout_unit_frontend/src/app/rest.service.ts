@@ -18,7 +18,7 @@ export interface Scout {
   quali: string;
   email: string;
   sections: Array<Section>;
-  scout_sections:Array<any>;
+  scout_sections: Array<Scout_Sections>;
 }
 
 // Export interface section
@@ -27,7 +27,7 @@ export interface Section {
   name: string;
   description: string;
   scouts: Array<Scout>;
-  scout_sections:Array<any>;
+  scout_sections: Array<any>;
 }
 
 // Export interface scout_sections
