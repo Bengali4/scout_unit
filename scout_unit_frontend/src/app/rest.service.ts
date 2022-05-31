@@ -7,8 +7,6 @@ import { map } from 'rxjs/operators';
 
 const endpoint = 'http://localhost:3000/';
 
-
-
 // Export interface scout
 export interface Scout {
   id: number;
@@ -68,6 +66,18 @@ export class RestService {
   // Add scout to section
   addScoutToSection(scout_sections: Scout_Sections): Observable<any> {
     return this.http.post(endpoint + 'scout_section', scout_sections);
+  }
+  //Get scout_sections
+  getScout_Sections(sectionId: Scout_Sections["sectionId"], scoutId: Scout_Sections["scoutId"]): Observable<any> {
+    return this.http.get(endpoint + 'scout_section/' + sectionId + "/" + scoutId);
+  }
+  // Update scout_sections
+  updateScout_Sections(sectionId: Scout_Sections["sectionId"], scoutId: Scout_Sections["scoutId"],scout_sections: Scout_Sections): Observable<any> {
+    return this.http.put(endpoint + 'scout_section/' + sectionId + "/" + scoutId, scout_sections);
+  }
+  // Delete scout_sections
+  deleteScout_Sections(sectionId: Scout_Sections["sectionId"], scoutId: Scout_Sections["scoutId"]): Observable<any> {
+    return this.http.delete(endpoint + 'scout_section/' + sectionId + "/" + scoutId);
   }
 
 }

@@ -50,4 +50,9 @@ export class SectionComponent implements OnInit {
   add() {
     this.router.navigate(['/scout-form']);
   }
+  // Redirect to scouts
+  listScouts() {
+    this.router.navigate(['/scout']);
+  }
+
 }

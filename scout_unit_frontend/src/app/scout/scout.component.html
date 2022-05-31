@@ -1,1 +1,7 @@
-<p>scout works!</p>
+<h2>Liste des scouts</h2>
+<ul>
+    <li *ngFor="let s of scouts">
+        {{s.totem}} - {{s.first_name}} {{s.name}}
+        <button (click)="showScout(s.id)">Voir profil</button>
+    </li>
+</ul>
