@@ -15,8 +15,8 @@ export class ScoutFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  //Add scout
-  addScout() {
+  //Save scout
+  saveScout() {
     this.rest.addScout(this.scout).subscribe((result: any) => {
       this.scout.id = result.id;
       this.router.navigate(['/scout-record'], { queryParams: { scout_id: this.scout.id } });

@@ -16,7 +16,7 @@ export interface Scout {
   quali: string;
   email: string;
   sections: Array<Section>;
-  scout_sections: Array<Scout_Sections>;
+  scout_sections: any;
 }
 
 // Export interface section
@@ -25,7 +25,7 @@ export interface Section {
   name: string;
   description: string;
   scouts: Array<Scout>;
-  scout_sections: Array<any>;
+  scout_sections: any;
 }
 
 // Export interface scout_sections
@@ -71,7 +71,7 @@ export class RestService {
   addScoutToSection(scout_sections: Scout_Sections): Observable<any> {
     return this.http.post(endpoint + 'scout_section', scout_sections);
   }
-  //Get scout_sections
+  //Get scout_sections by sectionId and scoutId
   getScout_Sections(sectionId: Scout_Sections["sectionId"], scoutId: Scout_Sections["scoutId"]): Observable<any> {
     return this.http.get(endpoint + 'scout_section/' + sectionId + "/" + scoutId);
   }

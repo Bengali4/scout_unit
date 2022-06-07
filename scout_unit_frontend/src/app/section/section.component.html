@@ -2,7 +2,7 @@
     <button (click)="listScouts()">Chercher un scout</button>
 </div>
 <div>
-    <button (click)="add()">Ajoute ton parcours</button>
+    <button (click)="addScout()">Ajoute ton parcours</button>
 </div>
 <div>
 <form>
@@ -15,13 +15,13 @@
       </mat-select>
     </mat-form-field>
 </form>
-Depuis :<input type="number" [(ngModel)]="from" placeholder="">
-Jusque :<input type="number" [(ngModel)]="to" placeholder="">
+Depuis :<input type="number" [(ngModel)]="from" placeholder="" min="1900" max="2100" value="1900">
+Jusque :<input type="number" [(ngModel)]="to" placeholder="" min="1900" max="2100" value="2100">
 <button (click)='showScoutsForSection(selected_section_id)'>Afficher scout</button>
 </div>
 <ul>
     <li *ngFor="let s of scouts">
-        {{s.totem}} (De : {{s.scout_sections}} à {{s.scout_sections}})
+        {{s.totem}} (De : {{s.scout_sections.from}} à {{s.scout_sections.to}})
     </li>
 </ul>
 {{alerte}}
