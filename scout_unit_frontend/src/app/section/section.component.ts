@@ -18,7 +18,7 @@ export class SectionComponent implements OnInit {
   // Instanciate variables
   sections: Section[] = [];
   scouts: Scout[] = [];
-  selected_section_id: number = 0;
+  selected_section_id: number = 1;
   selected_section_name: string = '';
   sectionInterfaces: SectionInterface[] = [];
   from: number = 1900;
@@ -29,6 +29,7 @@ export class SectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSections();
+    this.showScoutsForSection(this.selected_section_id);
   }
 
   // Get all sections
