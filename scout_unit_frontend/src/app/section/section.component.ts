@@ -21,8 +21,8 @@ export class SectionComponent implements OnInit {
   selected_section_id: number = 0;
   selected_section_name: string = '';
   sectionInterfaces: SectionInterface[] = [];
-  from: number = 0;
-  to: number = 0;
+  from: number = 1900;
+  to: number = 2100;
   alerte: string = '';
 
   constructor(public rest: RestService, private router: Router) { }

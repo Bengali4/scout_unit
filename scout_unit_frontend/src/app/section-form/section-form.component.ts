@@ -78,5 +78,9 @@ export class SectionFormComponent implements OnInit {
       });
     });
   }
+  //Cancel
+  cancel() {
+    this.router.navigate(['/scout-record'], { queryParams: { scout_id: this.scout_id } });
+  }
   
 }

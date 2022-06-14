@@ -1,27 +1,65 @@
-<div>
-    <button (click)="listScouts()">Chercher un scout</button>
+<nav class="navbar navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Unité Saint-Paul 20e Escault</a>
+  </div>
+</nav>
+
+<div class="container" style="margin-top: 2em;">
+<div class="row" style="margin-bottom: 2em;">
+    <button (click)="listScouts()" class="btn btn-primary col" style="margin-right: 1em;">Chercher un scout</button>
+    <button (click)="addScout()" class="btn btn-primary col">Ajoute ton parcours</button>
 </div>
 <div>
-    <button (click)="addScout()">Ajoute ton parcours</button>
+
+    <div class="row align-items-center">
+      <div class="col">
+        <form>
+        <mat-form-field appearance="fill">
+          <mat-label>Choisi la section</mat-label>
+          <mat-select [(ngModel)]="selected_section_id" name="Section">
+            <mat-option *ngFor="let section of sectionInterfaces" [value]="section.value">
+              {{section.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      </div>
+      <div class="col-auto">
+        <label class="form-label h5" for="startdate">Depuis</label>
+      </div>
+      <div class="col">
+        <input id="startdate" type="number" class="form-control" [(ngModel)]="from" placeholder=" " min="1900" max="2100">
+      </div>
+      <div class="col-auto">
+        <label class="form-label h5" for="enddate">Jusque</label>
+      </div>
+      <div class="col">
+        <input id="enddate" type="number" class="form-control" [(ngModel)]="to" placeholder=" " min="1900" max="2100">
+      </div>
+      <div class="col">
+        <button (click)='showScoutsForSection(selected_section_id)' class="btn btn-primary">Afficher scout</button>
+      </div>
+    </div>
+    <br> 
+
+
 </div>
-<div>
-<form>
-    <mat-form-field appearance="fill">
-      <mat-label>Choisi la section</mat-label>
-      <mat-select [(ngModel)]="selected_section_id" name="Section">
-        <mat-option *ngFor="let section of sectionInterfaces" [value]="section.value">
-          {{section.viewValue}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-</form>
-Depuis :<input type="number" [(ngModel)]="from" placeholder="" min="1900" max="2100" value="1900">
-Jusque :<input type="number" [(ngModel)]="to" placeholder="" min="1900" max="2100" value="2100">
-<button (click)='showScoutsForSection(selected_section_id)'>Afficher scout</button>
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Totem</th>
+        <th scope="col">Depuis</th>
+        <th scope="col">Jusque</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of scouts">
+        <td> {{s.totem}}</td>
+        <td>{{s.scout_sections.from}}</td>
+        <td>{{s.scout_sections.to}}</td>
+      </tr>
+  </table>
 </div>
-<ul>
-    <li *ngFor="let s of scouts">
-        {{s.totem}} (De : {{s.scout_sections.from}} à {{s.scout_sections.to}})
-    </li>
-</ul>
-{{alerte}}
+
+</div>
